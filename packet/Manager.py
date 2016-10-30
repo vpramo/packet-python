@@ -134,3 +134,14 @@ class Manager(BaseAPI):
         params = {'include': 'facility,attachments.device'}
         data = self.call_api('storage/%s' % volume_id, params=params)
         return Volume(data, self)
+
+   def get_capacity(self, facility, plan, quantitiy=1):
+        params = {
+                   "servers": [{
+                         'facility': facility,
+                         'plan' : plan, 
+                         'quantitiy': quantitiy
+                       }]
+                 }
+       data = self.call_api('capacity', type='POST', params=params)
+       return "available"
