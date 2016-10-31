@@ -135,7 +135,7 @@ class Manager(BaseAPI):
         data = self.call_api('storage/%s' % volume_id, params=params)
         return Volume(data, self)
 
-   def get_capacity(self, facility, plan, quantitiy=1):
+   def check_capacity(self, facility, plan, quantitiy=1):
         params = {
                    "servers": [{
                          'facility': facility,
@@ -145,3 +145,8 @@ class Manager(BaseAPI):
                  }
        data = self.call_api('capacity', type='POST', params=params)
        return "available"
+
+   def get_capacity(self, params={}):
+        data = self.call_api('capacity', params=params)
+        return data
+        
