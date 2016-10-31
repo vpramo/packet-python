@@ -145,3 +145,8 @@ class Manager(BaseAPI):
                  }
         data = self.call_api('capacity', type='POST', params=params)
         return "available"
+
+    def get_capacity(self, params={}):
+        data = self.call_api('capacity', params=params)
+        return data
+        
